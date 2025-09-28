@@ -37,40 +37,55 @@ export class StockPage {
     this.dataRows = this.historicalData.locator('tr');
   }
 
-    async naviagationToStock(stockSymbol:string){
+    async navigationToStock(stockSymbol: string) {
+    try {
         await this.page.goto(`/stocks/${stockSymbol}`);
-        await this.page.waitForURL(`**/stocks/${stockSymbol}`,{timeout: 10000});
-        await this.page.waitForResponse(response => response.url().includes(`/api/stocks/${stockSymbol}`) && response.status() === 200,
-            {timeout: 10000});
+        await this.page.waitForURL(`**/stocks/${stockSymbol}`, { timeout: 10000 });
+        await this.page.waitForResponse(
+            response => response.url().includes(`/api/stocks/${stockSymbol}`) && response.status() === 200,
+            { timeout: 10000 }
+        );
+    } catch (error) {
+        throw new Error(`Failed to navigate to stock "${stockSymbol}": ${error}`);
     }
+}
 
-    async selectStock(stockSymbol:string){
+    async selectStock(stockSymbol: string) {
+    try {
         await this.page.getByText(stockSymbol).first().click();
-        await this.page.waitForURL(`**/stocks/${stockSymbol}`,{timeout: 10000});
+        await this.page.waitForURL(`**/stocks/${stockSymbol}`, { timeout: 10000 });
+    } catch (error) {
+        throw new Error(`Failed to select stock "${stockSymbol}": ${error}`);
     }
+}
 
-    async setHistoricalTimeRange(range: string){
+    async setHistoricalTimeRange(range: string) {
+    try {
         await this.timeRangeSelector.selectOption(range);
-        await this.page.waitForFunction((selectedRange) => {
+        await this.page.waitForFunction(() => {
             const data = document.querySelector('.historical-data');
             return data && data.classList.contains(`range-${range.toLowerCase()}`);
-        },
-        null,
-        {timeout: 5000, polling: 100}
-        );
+        }, null, { timeout: 5000, polling: 100 });
+    } catch (error) {
+        throw new Error(`Failed to set historical time range "${range}": ${error}`);
     }
+}
 
-    async verifyHistoricalDataLoaded(range: string){
+    async verifyHistoricalDataLoaded(range: string) {
+    try {
         const startTime = Date.now();
-        await expect(this.historicalData).toBeVisible({timeout: 10000});
+        await expect(this.historicalData).toBeVisible({ timeout: 10000 });
         await expect(this.historicalData).toContainText(/Open|Close|Volume/);
-        const expectedRows = range === '1M' ? [20,22] :  [240,260] // Approximate trading days
+        const expectedRows = range === '1M' ? [20, 22] : [240, 260];
         const rowCount = await this.historicalData.locator('tr').count();
         expect(rowCount).toBeGreaterThanOrEqual(expectedRows[0]);
         expect(rowCount).toBeLessThanOrEqual(expectedRows[1]);
         const loadTime = Date.now() - startTime;
         expect(loadTime).toBeLessThan(5000);
+    } catch (error) {
+        throw new Error(`Historical data failed to load for range "${range}": ${error}`);
     }
+}
 
     async navigateToNextPage(){
         if (await this.nextPageButton.isVisible()) {
@@ -132,14 +147,23 @@ export class StockPage {
     }
 
     async setTimeRange(range: string){
+    try {
         await this.timeRangeSelector.selectOption(range);
+    } catch (error) {
+        throw new Error(`Failed to set time range "${range}": ${error}`);
     }
+}
 
     async addVolumeOverlay(){
+    try {
         await this.volumeOverlay.click();
+    } catch (error) {
+        throw new Error(`Failed to add volume overlay: ${error}`);
     }
+}
 
     async hoverOnCandlestick(){
+    try {
         await this.page.evaluate(() => {
             const candle = document.querySelector('.candlestick .candle');
             if (candle) {
@@ -147,17 +171,28 @@ export class StockPage {
                 candle.dispatchEvent(hoverEvent);
             }
         });
+    } catch (error) {
+        throw new Error(`Failed to hover on candlestick: ${error}`);
     }
+}
 
     async verifyLineChartDisplayed(){
+    try {
         await expect(this.chart).toBeVisible({timeout:5000});
         await expect(this.lineChartIndicator).toBeVisible({timeout: 5000});
+    } catch (error) {
+        throw new Error(`Line chart not displayed correctly: ${error}`);
     }
+}
 
     async verifyCandlestickChartDisplayed(){
+    try {
         await expect(this.candlestickChartIndicator).toBeVisible({timeout: 5000});
         await expect(this.tooltipData).toBeVisible({timeout: 5000});
         await expect(this.volumeOverlay).toBeVisible({timeout: 5000});
-        await expect(this.premiumIndicator).not.toBeVisible({timeout: 5000})
+        await expect(this.premiumIndicator).not.toBeVisible({timeout: 5000});
+    } catch (error) {
+        throw new Error(`Candlestick chart not displayed correctly: ${error}`);
     }
+}
 }

@@ -6,7 +6,7 @@ test.describe('Stock Page - Unautheticated Mode', () => {
         const stockPage = new StockPage(page);
 
         //Navigate and verify line chart is displayed
-        await stockPage.naviagationToStock('TSLA');
+        await stockPage.navigationToStock('TSLA');
         await stockPage.verifyLineChartDisplayed();
 
         //Switch to candlestick chart and verify
@@ -24,7 +24,7 @@ test.describe('Stock Page - Unautheticated Mode', () => {
 
     
         //Navigate to invalid stock symbol and verify suggestion
-        await stockPage.naviagationToStock('INVALIDSYM');
+        await stockPage.navigationToStock('INVALIDSYM');
         await stockPage.verifySuggestion('TSLA');
         await stockPage.selectSuggestion();
         await stockPage.verifyStockDetails('TSLA');

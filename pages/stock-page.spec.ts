@@ -2,70 +2,77 @@ import {test, expect} from '@playwright/test';
 import {StockPage} from '../tests/StockPage';
 
 test.describe('Stock Page - Unautheticated Mode', () => {
-    test('Switching from line chart to candlestick chart', async ({page}) => {
+    test('Interactive Chart switching with Time range and Overlays', async ({page}) => {
         const stockPage = new StockPage(page);
 
-        //Navigate and verify line chart is displayed
-        await stockPage.navigationToStock('TSLA');
+        await page.goto('/universe/US/TSLA');
+        await stockPage.acceptCookies();
+        
+        //Navigate to stock page
         await stockPage.verifyLineChartDisplayed();
 
-        //Switch to candlestick chart and verify
-        await stockPage.switchToCandlestickChart();
-        await stockPage.setTimeRange('1M');
-        await stockPage.addVolumeOverlay();
-        await stockPage.hoverOnCandlestick();
+        await stockPage.selectTimeRangeOption('1W');
+        await stockPage.verifyChartStartDate('1W');
 
-        //Verify candlestick chart is displayed
-        await stockPage.verifyCandlestickChartDisplayed();
+        await stockPage.selectTimeRangeOption('1M');
+        await stockPage.verifyChartStartDate('1M');
+
+        await stockPage.selectTimeRangeOption('3M');
+        await stockPage.verifyChartStartDate('3M');
+
+        await stockPage.selectTimeRangeOption('6M');
+        await stockPage.verifyChartStartDate('6M');
+
+        await stockPage.selectTimeRangeOption('1Y');
+        await stockPage.verifyChartStartDate('1Y');
+
+        await stockPage.selectTimeRangeOption('5Y');
+        await stockPage.verifyChartStartDate('5Y');
+
     });
 
-    test('Handling invalid stock symbol with suggestion', async ({page}) => {
+    test('Search Functionality for Exact Stock Ticker with Page Verification', async ({ page }) => {
         const stockPage = new StockPage(page);
 
-    
-        //Navigate to invalid stock symbol and verify suggestion
-        await stockPage.navigationToStock('INVALIDSYM');
-        await stockPage.verifySuggestion('TSLA');
-        await stockPage.selectSuggestion();
-        await stockPage.verifyStockDetails('TSLA');
-        await stockPage.verifyNoCrash();
+        // Navigate to homepage or search page
+        await page.goto('/universe/US/TSLA');
+        await stockPage.acceptCookies();
 
-        //Test delisted stock symbol
-        await stockPage.searchForStock('Twitter');
-        await stockPage.verifyErrorMessage();
-        await stockPage.verifyNoCrash();
+        // Search for exact ticker
+        await stockPage.searchForStock('AAPL');
+        await stockPage.selectStockResult();
+        await stockPage.verifyStockPage('AAPL');
 
-        //Test valid query
+        // Search for another exact ticker
         await stockPage.searchForStock('TSLA');
-        await stockPage.verifyStockDetails('TSLA');
-        await stockPage.verifyNoCrash();
-    });
+        await stockPage.selectStockResult();
+        await stockPage.verifyStockPage('TSLA');
 
-    test('Search with dynamic filtering and pagination', async ({page}) => {
+        // Search for another exact ticker
+        await stockPage.searchForStock('META');
+        await stockPage.selectStockResult();
+        await stockPage.verifyStockPage('META');
+
+        //searching error handling
+        await stockPage.searchForStock('INVALIDSYM');
+        await stockPage.returnCorrectNotFoundMessage();
+  });
+
+    test('Unauthenticated User will not be able to purchase Stock', async ({ page }) => {
         const stockPage = new StockPage(page);
 
-        //Navigate to search page
-        await page.goto('/search');
+        // Navigate to stock page
+        await page.goto('/universe/US/TSLA');
+        await stockPage.acceptCookies();
 
-        //Seach and select stock
-        await stockPage.searchForStock('TSLA');
-        await stockPage.verifyStockDetails('TSLA');
-        await stockPage.selectStock('TSLA');
+        await stockPage.searchForStock('NVDA');
+        await stockPage.selectStockResult();
+        await stockPage.verifyStockPage('NVDA');
 
-        //Filter historical data for last month
-        await stockPage.setTimeRange('1M');
-        await stockPage.verifyHistoricalDataLoaded('1M');
-
-        //Increase time range to last year
-        await stockPage.setTimeRange('1Y');
-        await stockPage.verifyHistoricalDataLoaded('1Y');
-        
-        //If pagination exists, navigate to next page and verify data loads
-        while (await stockPage.hasMorePages()) {
-        await stockPage.navigateToNextPage();
-        await stockPage.verifyHistoricalDataLoaded('1Y');
-        }
-
+        await stockPage.verifyPurchaseBoxDisplayed();
+        await stockPage.enterAmountInBuyBox('10');
+        await stockPage.verifyBuyButtonDisabled();
     });
+
 });
   

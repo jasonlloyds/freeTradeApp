@@ -2,8 +2,9 @@ import {defineConfig} from '@playwright/test';
 
 export default defineConfig({
   timeout: 10000,
+  fullyParallel: true,
   use:{
-    baseURL: 'https://freetrade.io',
+    baseURL: 'https://web.freetrade.io',
     headless: true,
     viewport: {width: 1280, height: 720},
     actionTimeout: 5000,

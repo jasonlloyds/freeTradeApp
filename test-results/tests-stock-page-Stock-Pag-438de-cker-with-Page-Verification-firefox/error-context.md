@@ -1,0 +1,307 @@
+# Page snapshot
+
+```yaml
+- generic:
+  - generic:
+    - generic:
+      - img
+    - banner:
+      - generic:
+        - generic:
+          - generic:
+            - link:
+              - /url: https://freetrade.io
+              - img
+          - generic:
+            - link:
+              - /url: https://freetrade.io/stocks-and-shares-isa
+              - text: Stocks and shares ISA
+            - link:
+              - /url: https://freetrade.io/pension/sipp
+              - text: Personal Pension
+            - link:
+              - /url: https://freetrade.io/general-investment-account
+              - text: General investment account
+          - generic:
+            - generic:
+              - generic:
+                - img
+                - paragraph: Search
+                - generic: ⌘ K
+            - generic:
+              - generic:
+                - link:
+                  - /url: /instrument/US30303M1027
+                  - button:
+                    - generic: Log in
+                - link:
+                  - /url: /signup
+                  - button:
+                    - generic: "\"\" Sign up"
+    - main:
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - generic: Meta
+                    - generic: $META • Facebook
+              - generic:
+                - button:
+                  - generic:
+                    - img
+                    - generic: Equity
+            - button:
+              - img
+          - generic:
+            - generic:
+              - generic:
+                - generic: $
+                - generic: "705"
+                - generic: ".32"
+              - generic:
+                - generic:
+                  - img
+                  - generic: "-6.60%"
+                  - generic: (-$49.88)
+                - generic: in the last month
+              - generic:
+                - img
+                - paragraph: The US market is currently closed. Pre-market begins at 09:00, 13 October.
+            - generic:
+              - img:
+                - generic:
+                  - generic:
+                    - generic: "-8%"
+                  - generic:
+                    - generic: "-6%"
+                  - generic:
+                    - generic: "-4%"
+                  - generic:
+                    - generic: "-2%"
+                  - generic:
+                    - generic: 0%
+                  - generic:
+                    - generic: 2%
+                  - generic:
+                    - generic: 4%
+            - generic:
+              - generic:
+                - button: 1D
+              - generic:
+                - button: 1W
+              - generic:
+                - button: 1M
+              - generic:
+                - button: 3M
+              - generic:
+                - button: 6M
+              - generic:
+                - button: 1Y
+              - generic:
+                - button: 5Y
+        - complementary:
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - button: Buy
+                  - button:
+                    - generic:
+                      - img
+                      - text: Instant order
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic: $
+                        - textbox
+                  - generic:
+                    - generic:
+                      - generic:
+                        - text: No. of shares (est.)
+                        - button:
+                          - img
+                      - generic: "Latest price: $705.32"
+              - generic:
+                - link:
+                  - /url: /signup
+                  - button:
+                    - generic: "\"\" Sign up"
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - heading [level=2]: Stats
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - heading [level=4]: Get access to key stats
+                    - paragraph: Sign up or log in to see key stats
+                  - generic:
+                    - link:
+                      - /url: /instrument/US30303M1027
+                      - button:
+                        - generic: Log in
+                    - link:
+                      - /url: /signup
+                      - button:
+                        - generic: "\"\" Sign up"
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - heading [level=3]: US Market
+                    - heading [level=2]: About Meta Platforms Inc
+              - paragraph: The biggest social networking firm in the world. They own Facebook, Instagram, WhatsApp and Oculus and their platforms attract over a billion users daily. The parent company renamed itself from Facebook to Meta in October 2021.
+              - generic:
+                - generic:
+                  - paragraph: Technology
+                  - paragraph: Sector
+            - generic:
+              - generic:
+                - img
+                - link:
+                  - /url: https://public.freetrade.io/costs_and_charges/GBR/US30303M1027.html
+                  - text: Costs and charges
+          - generic:
+            - generic:
+              - generic:
+                - heading [level=2]: Analyst ratings & estimates
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - heading [level=4]: Advanced stock fundamentals
+                    - paragraph: Sign up to get access to the latest stock fundamentals
+                  - generic:
+                    - link:
+                      - /url: /instrument/US30303M1027
+                      - button:
+                        - generic: Log in
+                    - link:
+                      - /url: /signup
+                      - button:
+                        - generic: "\"\" Sign up"
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - img
+            - paragraph: Freetrade is your gateway to commission-free investing. Join over 1.6 million users using the Best online trading platform, as voted at the British Bank Awards for six years running.
+          - generic:
+            - generic:
+              - generic: Accounts
+              - generic:
+                - link:
+                  - /url: https://freetrade.io/stocks-and-shares-isa
+                  - text: Stocks and Shares ISA
+                - link:
+                  - /url: https://freetrade.io/pension/sipp
+                  - text: Personal Pension
+                - link:
+                  - /url: https://freetrade.io/general-investment-account
+                  - text: General Investment
+            - generic:
+              - generic: Customer Support
+              - generic:
+                - link:
+                  - /url: https://freetrade.io/contact
+                  - text: Help
+                - link:
+                  - /url: https://freetrade.io/complaints
+                  - text: Complaints
+                - link:
+                  - /url: https://freetrade.io/about/here-for-you
+                  - text: Here for you
+                - link:
+                  - /url: https://freetrade.io/investment-risk-explained
+                  - text: Investment risk
+            - generic:
+              - generic: Resources
+              - generic:
+                - link:
+                  - /url: https://freetrade.io/dictionary
+                  - text: Dictionary
+                - link:
+                  - /url: https://freetrade.io/compare-plans
+                  - text: Compare Plans
+            - generic:
+              - generic: Company
+              - generic:
+                - link:
+                  - /url: https://freetrade.io/about
+                  - text: About
+                - link:
+                  - /url: https://freetrade.io/careers
+                  - text: Careers
+        - generic:
+          - generic:
+            - generic:
+              - generic: Legal
+              - generic:
+                - link:
+                  - /url: https://freetrade.io/terms-and-conditions-2
+                  - text: T&Cs
+                - link:
+                  - /url: https://freetrade.io/legal/privacy-policy
+                  - text: Privacy policy
+                - link:
+                  - /url: https://freetrade.io/legal/cookies-policy
+                  - text: Cookie policy
+                - link:
+                  - /url: https://freetrade.io/legal/order-execution-policy
+                  - text: Order execution policy
+            - generic:
+              - generic:
+                - link:
+                  - /url: https://freetrade.io/legal/conflicts-of-interest
+                  - text: Conflicts of interest
+                - link:
+                  - /url: https://freetrade.io/legal/execution-venues
+                  - text: Execution venues
+                - link:
+                  - /url: https://freetrade.io/blog/keeping-client-money-safe
+                  - text: Keeping your money safe
+                - link:
+                  - /url: https://freetrade.io/legal/mifidpru-disclosures
+                  - text: MIFIDPRU disclosures
+          - generic:
+            - paragraph: Freetrade does not provide investment advice and individual investors should make their own decisions or seek independent advice. The value of investments can go down as well as up and you may receive back less than your original investment. Past performance is not a reliable indicator of future returns. Freetrade is a trading name of Freetrade Limited, which is a member firm of the London Stock Exchange and is authorised and regulated by the Financial Conduct Authority. Registered in England and Wales (no. 09797821).
+            - paragraph: © 2025 Freetrade, All rights reserved. The Apple logo is a trademark of Apple Inc. App Store is a service mark of Apple Inc. Google Play and the Google Play logo are trademarks of Google LLC.
+        - generic:
+          - generic:
+            - link:
+              - /url: https://www.linkedin.com/company/freetrade/
+              - img
+            - link:
+              - /url: https://www.facebook.com/freetradeapp
+              - img
+            - link:
+              - /url: https://x.com/freetrade
+              - img
+            - link:
+              - /url: https://www.instagram.com/freetrade/
+              - img
+  - alert: Trade Meta (META) shares | Commission-free on Freetrade
+  - dialog "Modal title" [ref=e2]:
+    - heading "Modal title" [level=2] [ref=e4]
+    - paragraph [ref=e6]: Modal description
+    - generic [ref=e7]:
+      - img "icon" [ref=e8]
+      - textbox [active] [ref=e10]: INVALIDSYM
+      - img "icon" [ref=e11] [cursor=pointer]
+    - generic [ref=e14]:
+      - paragraph [ref=e15]: Didn't find what you were looking for?
+      - generic [ref=e17]:
+        - text: We're continually expanding our range of stocks.
+        - link "Vote here" [ref=e18] [cursor=pointer]:
+          - /url: https://docs.google.com/forms/d/e/1FAIpQLSfF4PtfpGRcYj9-i5vQjN-TOGpboFlg63h-G0BUUJGA1k-1CQ/viewform?usp=pp_url&entry.733664542=&entry.318288531=
+        - text: to have your say about what gets added next.
+```
